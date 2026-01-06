@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soundbox - Music Player</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18V5l12-2v13M9 9h12M6 18h.01M6 14h.01M6 10h.01M6 6h.01"/>
+      </svg>
+      <span>Soundbox</span>
+    </div>
+
+    <nav class="nav">
+      <a class="nav-link active" data-page="home">
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        <span>Home</span>
+      </a>
+      <a class="nav-link" data-page="library">
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        <span>Library</span>
+      </a>
+      <a class="nav-link" data-page="favorites">
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+        <span>Favorites</span>
+      </a>
+      <a class="nav-link" data-page="playlists">
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9h12M6 12h12M6 15h12M9 3H3v18h6"></path>
+          <circle cx="18" cy="16" r="5"></circle>
+          <path d="M18 13v6l2 1"></path>
+        </svg>
+        <span>Playlists</span>
+      </a>
+    </nav>
+
+    <div class="support">
+      <p>Settings</p>
+      <a id="settingsLink" class="support-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m5.08-5.08l4.24-4.24"></path>
+        </svg>
+        Preferences
+      </a>
+      <a id="aboutLink" class="support-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 16v-4M12 8h.01"></path>
+        </svg>
+        About
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="search-container">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input class="search" id="searchInput" type="text" placeholder="Search songs, artists, playlists...">
+        <button class="search-clear" id="searchClear" title="Clear search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content with Right Sidebar -->
+    <div class="main-content-wrapper">
+      <!-- Left Content Area -->
+      <div class="content-wrapper">
+      
+      <!-- Home Page -->
+      <section class="page" id="homePage" data-page="home">
+        <div class="home-container">
+          <!-- Featured Carousel Section -->
+          <div class="featured-section">
+            <div class="section-header">
+              <h3>Today's Special</h3>
+              <button class="carousel-nav carousel-prev" id="specialPrev" title="Previous">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="carousel-nav carousel-next" id="specialNext" title="Next">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="carousel-container">
+              <div class="carousel-track" id="todaySpecialCarousel"></div>
+            </div>
+          </div>
+
+          <!-- Suggestions Section -->
+          <div class="featured-section">
+            <div class="section-header">
+              <h3>Suggestions For You</h3>
+              <button class="carousel-nav carousel-prev" id="suggestionPrev" title="Previous">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="carousel-nav carousel-next" id="suggestionNext" title="Next">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="carousel-container">
+              <div class="carousel-track" id="suggestionsCarousel"></div>
+            </div>
+          </div>
+
+          <!-- Trending/Crazy Hits Section -->
+          <div class="featured-section">
+            <div class="section-header">
+              <h3>Trending Hits</h3>
+              <button class="carousel-nav carousel-prev" id="hitsPrev" title="Previous">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="carousel-nav carousel-next" id="hitsNext" title="Next">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="carousel-container">
+              <div class="carousel-track" id="hitsCarousel"></div>
+            </div>
+          </div>
+
+          <!-- Recently Played Tracks -->
+          <div class="tracks-section">
+            <div class="section-header">
+              <h3>Recently Played</h3>
+            </div>
+            <div class="song-list" id="recentlyPlayedList"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Library Page -->
+      <section class="page" id="libraryPage" data-page="library">
+        <div class="page-header">
+          <h1>Your Library</h1>
+        </div>
+        <div class="song-list" id="libraryList"></div>
+        <p class="empty-state" id="emptyLibrary">No songs in your library yet</p>
+      </section>
+
+      <!-- Favorites Page -->
+      <section class="page" id="favoritesPage" data-page="favorites">
+        <div class="page-header">
+          <h1>Favorite Songs</h1>
+        </div>
+        <div class="song-list" id="favoritesList"></div>
+        <p class="empty-state" id="emptyFavorites">No favorites yet. Add songs to get started!</p>
+      </section>
+
+      <!-- Playlists Page -->
+      <section class="page" id="playlistsPage" data-page="playlists">
+        <div class="page-header">
+          <h1>Your Playlists</h1>
+          <button class="btn-primary" id="createPlaylistBtn">+ New Playlist</button>
+        </div>
+        <div class="playlists-grid" id="playlistsGrid"></div>
+        <p class="empty-state" id="emptyPlaylists">No playlists yet. Create one!</p>
+      </section>
+
+    </div>
+
+    <!-- Right Sidebar -->
+    <aside class="right-sidebar">
+      <!-- Now Playing Card -->
+      <div class="now-playing-card">
+        <div class="card-title">Now Playing</div>
+        <div class="np-card-cover" id="npCardCover"></div>
+        <div class="np-card-info">
+          <h4 id="npCardTitle">Select a song</h4>
+          <p id="npCardArtist">No song selected</p>
+        </div>
+        <div class="np-card-buttons">
+          <button class="btn-icon-sm" id="npCardFavBtn" title="Add to favorites">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </button>
+          <button class="btn-icon-sm" id="npCardShareBtn" title="Share">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Queue Section -->
+      <div class="queue-section">
+        <div class="card-title">Queue</div>
+        <div class="queue-list" id="queueList"></div>
+      </div>
+
+      <!-- Suggestions Section -->
+      <div class="suggestions-section">
+        <div class="card-title">Recommended</div>
+        <div class="suggestions-list" id="rightSuggestions"></div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Audio Player -->
+  <footer class="player">
+    <audio id="audioPlayer"></audio>
+    
+    <div class="player-left">
+      <div class="player-cover" id="playerCover"></div>
+      <div class="player-info">
+        <div class="player-title" id="playerTitle">Soundbox</div>
+        <div class="player-artist" id="playerArtist">Select a song</div>
+      </div>
+    </div>
+
+    <div class="player-center">
+      <div class="controls">
+        <button class="control-btn" id="prevBtn" title="Previous">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+          </svg>
+        </button>
+        <button class="control-btn play-btn" id="playBtn" title="Play">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+        <button class="control-btn" id="nextBtn" title="Next">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 18h2V6h-2zm-11-7l8.5-6v12z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="progress-section">
+        <span class="time" id="currentTime">0:00</span>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+          <input type="range" class="progress-slider" id="progressSlider" min="0" max="100" value="0" title="Progress">
+        </div>
+        <span class="time" id="duration">0:00</span>
+      </div>
+    </div>
+
+    <div class="player-right">
+      <button class="control-btn" id="volumeBtn" title="Volume">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M15.54 8.46a7 7 0 0 1 0 9.9M17.5 4.5a11 11 0 0 1 0 15.5"></path>
+        </svg>
+      </button>
+      <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70" title="Volume level">
+    </div>
+  </footer>
+
+</div>
+
+<!-- Settings Modal -->
+<div class="modal" id="settingsModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Preferences</h2>
+      <button class="modal-close" id="closeSettings" title="Close settings">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="setting-group">
+        <label class="setting-item">
+          <span>Autoplay</span>
+          <input type="checkbox" id="autoplayToggle" class="toggle-switch">
+        </label>
+        <label class="setting-item">
+          <span>Dark Mode</span>
+          <input type="checkbox" id="darkModeToggle" class="toggle-switch" checked>
+        </label>
+      </div>
+      <button class="btn-secondary" id="clearStorageBtn">Clear All Data</button>
+    </div>
+  </div>
+</div>
+
+<!-- Playlist Creator Modal -->
+<div class="modal" id="playlistModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Create Playlist</h2>
+      <button class="modal-close" id="closePlaylist" title="Close playlist creator">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <input type="text" id="playlistName" placeholder="Playlist name" class="input-field">
+      <textarea id="playlistDesc" placeholder="Description" class="textarea-field"></textarea>
+      <button class="btn-primary" id="savePlaylistBtn">Create</button>
+    </div>
+  </div>
+</div>
+
+<!-- About Modal -->
+<div class="modal" id="aboutModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>About Soundbox</h2>
+      <button class="modal-close" id="closeAbout" title="Close about modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h3 class="about-title">Soundbox v1.0</h3>
+      <p class="about-text">A modern music player built with vanilla JavaScript, Web Audio API, and Local Storage.</p>
+      <p class="about-subtitle">Features:</p>
+      <ul class="about-list">
+        <li>Play audio files</li>
+        <li>Manage favorites</li>
+        <li>Create playlists</li>
+        <li>Search functionality</li>
+        <li>Local storage persistence</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
+
+
+
+
