@@ -217,13 +217,6 @@ body {
   color: white;
 }
 
-.nav-link {
-  background: transparent;
-}
-
-.nav-link input:checked ~ * {
-  color: white;
-}
 
 .nav-link:has(input:checked) {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -480,10 +473,22 @@ body {
 
 /* Featured + sections */
 .featured-section {
-  background: var(--card);
-  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 20px;
+}
+
+/* Consolidated common card-like properties for repeated components */
+.card-like,
+.featured-section,
+.stats-card,
+.quick-access-card,
+.tracks-section,
+.queue-section,
+.suggestions-section,
+.playlist-card,
+.empty-state {
+  background: var(--card);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow-small);
 }
 
@@ -547,15 +552,12 @@ body {
 }
 
 .stats-card {
-  background: var(--card);
-  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 20px;
   display: flex;
   align-items: center;
   gap: 16px;
   transition: all var(--transition);
-  box-shadow: var(--shadow-small);
 }
 
 .stats-card:hover {
@@ -599,8 +601,6 @@ body {
 }
 
 .quick-access-card {
-  background: var(--card);
-  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 20px;
   display: flex;
@@ -608,7 +608,6 @@ body {
   gap: 16px;
   cursor: pointer;
   transition: all var(--transition);
-  box-shadow: var(--shadow-small);
   text-decoration: none;
 }
 
@@ -759,11 +758,8 @@ body {
 }
 
 .tracks-section {
-  background: var(--card);
-  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 18px;
-  box-shadow: var(--shadow-small);
 }
 
 .song-item {
@@ -788,14 +784,7 @@ body {
   box-shadow: var(--shadow-medium);
 }
 
-.song-item.active {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  border-color: var(--primary);
-  color: white;
-  box-shadow: var(--shadow-large);
-}
-
-/* Highlight the currently playing item (data attribute from simple JS) */
+.song-item.active,
 .song-item[data-playing="true"] {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   border-color: var(--primary);
@@ -803,6 +792,7 @@ body {
   box-shadow: var(--shadow-large);
 }
 
+/* Highlight the currently playing item (data attribute from simple JS) */
 .song-item[data-playing="true"] .song-title,
 .song-item[data-playing="true"] .song-artist,
 .song-item[data-playing="true"] .song-album,
@@ -1220,19 +1210,14 @@ body {
   color: var(--text-muted);
   padding: 80px 20px;
   font-size: 16px;
-  background: var(--card);
   border-radius: 20px;
-  border: 1px solid var(--border);
 }
 
 /* Right rail cards */
 .queue-section,
 .suggestions-section {
-  background: var(--card);
-  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 16px;
-  box-shadow: var(--shadow-small);
 }
 
 .queue-list,
@@ -1362,24 +1347,7 @@ body {
   padding: 12px 0;
   cursor: pointer;
 }
-.input-field:focus {
-  outline: none;
-  border-color: var(--primary);
-}
 
-.textarea-field {
-  width: 100%;
-  min-height: 100px;
-  padding: 12px 16px;
-  background: var(--card-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  color: var(--text);
-  font-size: 14px;
-  resize: vertical;
-  font-family: inherit
-  border: none;
-}
 
 .toggle-switch::before {
   content: '';
