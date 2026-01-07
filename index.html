@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div class="app">
+<div class="app" data-page="home">
 
   <!-- Sidebar -->
   <aside class="sidebar">
@@ -21,46 +21,50 @@
     </div>
 
     <nav class="nav">
-      <a class="nav-link active" data-page="home">
+      <label class="nav-link active">
+        <input type="radio" name="page" value="home" class="page-radio" checked>
         <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
           <polyline points="9 22 9 12 15 12 15 22"></polyline>
         </svg>
         <span>Home</span>
-      </a>
-      <a class="nav-link" data-page="library">
+      </label>
+      <label class="nav-link">
+        <input type="radio" name="page" value="library" class="page-radio">
         <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
           <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
         </svg>
         <span>Library</span>
-      </a>
-      <a class="nav-link" data-page="favorites">
+      </label>
+      <label class="nav-link">
+        <input type="radio" name="page" value="favorites" class="page-radio">
         <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
         </svg>
         <span>Favorites</span>
-      </a>
-      <a class="nav-link" data-page="playlists">
+      </label>
+      <label class="nav-link">
+        <input type="radio" name="page" value="playlists" class="page-radio">
         <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M6 9h12M6 12h12M6 15h12M9 3H3v18h6"></path>
           <circle cx="18" cy="16" r="5"></circle>
           <path d="M18 13v6l2 1"></path>
         </svg>
         <span>Playlists</span>
-      </a>
+      </label>
     </nav>
 
     <div class="support">
       <p>Settings</p>
-      <a id="settingsLink" class="support-link">
+      <a href="#settingsModal" class="support-link modal-trigger">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="3"></circle>
           <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m5.08-5.08l4.24-4.24"></path>
         </svg>
         Preferences
       </a>
-      <a id="aboutLink" class="support-link">
+      <a href="#aboutModal" class="support-link modal-trigger">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="10"></circle>
           <path d="M12 16v-4M12 8h.01"></path>
@@ -173,7 +177,104 @@
         <div class="page-header">
           <h1>Your Library</h1>
         </div>
-        <div class="song-list" id="libraryList"></div>
+        <div class="song-list" id="libraryList">
+          <div class="song-item" data-id="1" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+            <div class="song-cover-small"></div>
+            <div class="song-meta">
+              <div class="song-title">Summer Breeze</div>
+              <div class="song-artist">Kevin MacLeod</div>
+            </div>
+            <div class="song-album">Free Music</div>
+            <div class="song-duration">4:04</div>
+            <div class="song-actions">
+              <button class="btn-icon fav-btn" title="Favorite">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="song-item" data-id="2" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+            <div class="song-cover-small"></div>
+            <div class="song-meta">
+              <div class="song-title">Sunny Afternoon</div>
+              <div class="song-artist">Kevin MacLeod</div>
+            </div>
+            <div class="song-album">Free Music</div>
+            <div class="song-duration">3:20</div>
+            <div class="song-actions">
+              <button class="btn-icon fav-btn" title="Favorite">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="song-item" data-id="3" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
+            <div class="song-cover-small"></div>
+            <div class="song-meta">
+              <div class="song-title">Evening Walk</div>
+              <div class="song-artist">Kevin MacLeod</div>
+            </div>
+            <div class="song-album">Free Music</div>
+            <div class="song-duration">3:23</div>
+            <div class="song-actions">
+              <button class="btn-icon fav-btn" title="Favorite">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="song-item" data-id="4" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">
+            <div class="song-cover-small"></div>
+            <div class="song-meta">
+              <div class="song-title">Upbeat Groove</div>
+              <div class="song-artist">Kevin MacLeod</div>
+            </div>
+            <div class="song-album">Free Music</div>
+            <div class="song-duration">5:22</div>
+            <div class="song-actions">
+              <button class="btn-icon fav-btn" title="Favorite">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="song-item" data-id="5" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3">
+            <div class="song-cover-small"></div>
+            <div class="song-meta">
+              <div class="song-title">Night Vibes</div>
+              <div class="song-artist">Kevin MacLeod</div>
+            </div>
+            <div class="song-album">Free Music</div>
+            <div class="song-duration">4:29</div>
+            <div class="song-actions">
+              <button class="btn-icon fav-btn" title="Favorite">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="song-item" data-id="6" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3">
+            <div class="song-cover-small"></div>
+            <div class="song-meta">
+              <div class="song-title">Electric Dreams</div>
+              <div class="song-artist">Kevin MacLeod</div>
+            </div>
+            <div class="song-album">Free Music</div>
+            <div class="song-duration">2:52</div>
+            <div class="song-actions">
+              <button class="btn-icon fav-btn" title="Favorite">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
         <p class="empty-state" id="emptyLibrary">No songs in your library yet</p>
       </section>
 
@@ -182,7 +283,40 @@
         <div class="page-header">
           <h1>Favorite Songs</h1>
         </div>
-        <div class="song-list" id="favoritesList"></div>
+        <div class="song-list" id="favoritesList">
+          <div class="song-item" data-id="1" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+            <div class="song-cover-small"></div>
+            <div class="song-meta">
+              <div class="song-title">Summer Breeze</div>
+              <div class="song-artist">Kevin MacLeod</div>
+            </div>
+            <div class="song-album">Free Music</div>
+            <div class="song-duration">4:04</div>
+            <div class="song-actions">
+              <button class="btn-icon fav-btn active" title="Favorite">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="song-item" data-id="5" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3">
+            <div class="song-cover-small"></div>
+            <div class="song-meta">
+              <div class="song-title">Night Vibes</div>
+              <div class="song-artist">Kevin MacLeod</div>
+            </div>
+            <div class="song-album">Free Music</div>
+            <div class="song-duration">4:29</div>
+            <div class="song-actions">
+              <button class="btn-icon fav-btn active" title="Favorite">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
         <p class="empty-state" id="emptyFavorites">No favorites yet. Add songs to get started!</p>
       </section>
 
@@ -190,9 +324,30 @@
       <section class="page" id="playlistsPage" data-page="playlists">
         <div class="page-header">
           <h1>Your Playlists</h1>
-          <button class="btn-primary" id="createPlaylistBtn">+ New Playlist</button>
+          <a href="#playlistModal" class="btn-primary modal-trigger">+ New Playlist</a>
         </div>
-        <div class="playlists-grid" id="playlistsGrid"></div>
+        <div class="playlists-grid" id="playlistsGrid">
+          <div class="playlist-card">
+            <div class="playlist-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9h12M6 12h12M6 15h12M9 3H3v18h6"></path>
+                <circle cx="18" cy="16" r="5"></circle>
+                <path d="M18 13v6l2 1"></path>
+              </svg>
+            </div>
+            <h4>All Songs</h4>
+            <div class="playlist-count">6 songs</div>
+          </div>
+          <div class="playlist-card">
+            <div class="playlist-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9h12M6 12h12M6 15h12"></path>
+              </svg>
+            </div>
+            <h4>Chill Mix</h4>
+            <div class="playlist-count">3 songs</div>
+          </div>
+        </div>
         <p class="empty-state" id="emptyPlaylists">No playlists yet. Create one!</p>
       </section>
 
@@ -299,22 +454,22 @@
   <div class="modal-content">
     <div class="modal-header">
       <h2>Preferences</h2>
-      <button class="modal-close" id="closeSettings" title="Close settings">
+      <a href="#" class="modal-close" title="Close settings">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
-      </button>
+      </a>
     </div>
     <div class="modal-body">
       <div class="setting-group">
         <label class="setting-item">
           <span>Autoplay</span>
-          <input type="checkbox" id="autoplayToggle" class="toggle-switch">
+          <input type="checkbox" class="toggle-switch">
         </label>
         <label class="setting-item">
           <span>Dark Mode</span>
-          <input type="checkbox" id="darkModeToggle" class="toggle-switch" checked>
+          <input type="checkbox" class="toggle-switch" checked>
         </label>
       </div>
       <button class="btn-secondary" id="clearStorageBtn">Clear All Data</button>
@@ -327,17 +482,19 @@
   <div class="modal-content">
     <div class="modal-header">
       <h2>Create Playlist</h2>
-      <button class="modal-close" id="closePlaylist" title="Close playlist creator">
+      <a href="#" class="modal-close" title="Close playlist creator">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
-      </button>
+      </a>
     </div>
     <div class="modal-body">
-      <input type="text" id="playlistName" placeholder="Playlist name" class="input-field">
-      <textarea id="playlistDesc" placeholder="Description" class="textarea-field"></textarea>
-      <button class="btn-primary" id="savePlaylistBtn">Create</button>
+      <form id="playlistForm">
+        <input type="text" id="playlistName" placeholder="Playlist name" class="input-field" required>
+        <textarea id="playlistDesc" placeholder="Description" class="textarea-field"></textarea>
+        <button type="submit" class="btn-primary">Create</button>
+      </form>
     </div>
   </div>
 </div>
@@ -347,19 +504,19 @@
   <div class="modal-content">
     <div class="modal-header">
       <h2>About Soundbox</h2>
-      <button class="modal-close" id="closeAbout" title="Close about modal">
+      <a href="#" class="modal-close" title="Close about modal">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
-      </button>
+      </a>
     </div>
     <div class="modal-body">
       <h3 class="about-title">Soundbox v1.0</h3>
-      <p class="about-text">A modern music player built with vanilla JavaScript, Web Audio API, and Local Storage.</p>
+      <p class="about-text">A modern music player with streamlined HTML &amp; CSS design.</p>
       <p class="about-subtitle">Features:</p>
       <ul class="about-list">
-        <li>Play audio files</li>
+        <li>Native audio controls</li>
         <li>Manage favorites</li>
         <li>Create playlists</li>
         <li>Search functionality</li>
