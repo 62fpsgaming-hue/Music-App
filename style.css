@@ -1,24 +1,24 @@
 :root {
-  --primary: #38bdf8;    
-  --primary-dark: #0ea5e9;  
-  --primary-light: #7dd3fc; 
-  --dark: #020617;        
-  --card: rgba(8, 15, 40, 0.85);
-  --card-elevated: rgba(12, 23, 72, 0.9);
-  --border: rgba(56, 189, 248, 0.25);
-  --text: #eaf6ff;
-  --text-muted: #94a3b8;
-  --glass: rgba(10, 20, 50, 0.75);
-  --blur: blur(22px);
-  --shadow-small: 0 0 12px rgba(56, 189, 248, 0.25);
-  --shadow-medium: 0 0 30px rgba(14, 165, 233, 0.35);
-  --shadow-large: 0 0 60px rgba(56, 189, 248, 0.55);
-  --transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 22px;
-  --radius-xl: 30px;
+  --primary: rgb(207, 40, 40);
+  --primary-light: rgb(240, 129, 129);
+  --dark: #0a0a0a;
+  --card: #1a1a1a;
+  --card-elevated: #252525;
+  --border: #333333;
+  --text: #ffffff;
+  --text-muted: #a0a0a0;
+  --glass: rgba(26, 26, 26, 0.95);
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-large: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --blur: blur(16px);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
 }
+
 
 
 
