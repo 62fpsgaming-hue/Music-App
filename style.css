@@ -1,4 +1,4 @@
-: root {
+:root {
   --primary: #1e90ff;        
   --primary-dark: #1c7ed6;   
   --primary-light: #4dabf7;  
@@ -8,17 +8,18 @@
   --border: #2c3a5a;         
   --text: #ffffff;          
   --text-muted: #9bb1d4;    
-  --glass: rgba(26, 26, 26, 0.95);
+  --glass: rgba(20, 27, 45, 0.85);
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-large: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-small: 0 2px 6px rgba(30, 144, 255, 0.15);
+  --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.45);
+  --shadow-large: 0 12px 40px rgba(0, 0, 0, 0.6);
   --blur: blur(16px);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 20px;
 }
+
 
 * {
   margin: 0;
