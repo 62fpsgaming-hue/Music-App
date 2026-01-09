@@ -1,6 +1,26 @@
 export const tracks = [
     {
         id: 't1',
+        title: "Astronaut In The Ocean",
+        artist: "Masked Wolf",
+        duration: 210,
+        genre: "Hip Hop",
+        favorite: false,
+        coverColor: "#1a1a1a",
+        src: "music/Masked Wolf - Astronaut In The Ocean (Official Music Video).mp3"
+    },
+    {
+        id: 't2',
+        title: "Señorita",
+        artist: "Shawn Mendes, Camila Cabello",
+        duration: 191,
+        genre: "Pop",
+        favorite: true,
+        coverColor: "#d63031",
+        src: "music/Shawn Mendes, Camila Cabello - Señorita.mp3"
+    },
+    {
+        id: 't3',
         title: "Poison",
         artist: "Meg Myers",
         duration: 220,
