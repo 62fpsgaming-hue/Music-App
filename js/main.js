@@ -1,6 +1,7 @@
 import { tracks } from './tracks.js';
 import * as Player from './player.js';
 import { UI } from './ui.js';
+import * as DynamicContent from './dynamicContent.js';
 
 // Helper to bind multiple button IDs to the same handler
 function bindButtons(ids, handler) {
@@ -13,6 +14,7 @@ function bindButtons(ids, handler) {
 document.addEventListener('DOMContentLoaded', () => {
     Player.init();
     Player.loadInitialData();
+    DynamicContent.initializeDynamicContent();
     bindEvents();
 });
 
@@ -57,13 +59,11 @@ function bindEvents() {
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
-            // If empty, reset header
-            const searchHeader = document.querySelector('#search h2');
-            if (searchHeader) searchHeader.textContent = 'Search Results';
+            // Call async search function
             Player.search(e.target.value);
         });
 
-        // When clicking search box, ensure we are on search page?
+        // When clicking search box, ensure we are on search page
         searchInput.addEventListener('focus', () => {
             UI.showPage('search');
         });
@@ -82,9 +82,14 @@ function bindEvents() {
     const genreCards = document.querySelectorAll('.genre-card');
     genreCards.forEach(card => {
         card.addEventListener('click', () => {
-            // Extract genre from card text
-            const genreName = card.querySelector('.genre-name').textContent;
-            Player.filterGenre(genreName);
+            // Extract genre from card text - handle both types of cards
+            const genreNameEl = card.querySelector('.genre-name') || card.querySelector('.genre-name-white');
+            if (genreNameEl) {
+                const genreText = genreNameEl.textContent.trim();
+                // Remove any icon text or extra whitespace
+                const genreName = genreText.split(/\s+/)[0];
+                Player.filterGenre(genreName);
+            }
         });
     });
 }

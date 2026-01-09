@@ -1,6 +1,6 @@
 /* CSS Variables & Global Resets */
 :root {
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-gradient: linear-gradient(135deg, #abaeb7 0%, #6e6e6e 100%);
     --bg-light: #fff;
     --bg-gray: #e8e8e8;
     --text-main: #000;

@@ -1,6 +1,6 @@
 /* Now Playing Card (Sidebar) */
 .now-playing-card {
-    background: #000;
+    background: linear-gradient(135deg, #000000 0%, #bdbdbd 100%);
     color: #fff;
     border-radius: 16px;
     padding: 30px 20px;
@@ -8,19 +8,40 @@
     flex-direction: column;
     gap: 20px;
     align-items: center;
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
     text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Indicator for API preview tracks */
+.now-playing-card.api-track::after {
+    content: 'PREVIEW';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 10px;
+    background: rgba(102, 126, 234, 0.9);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .now-playing-card .player-title {
     color: #fff;
     font-size: 18px;
     margin-bottom: 4px;
+    font-weight: 600;
 }
 
 .now-playing-card .player-artist {
-    color: #a0a0a0;
+    color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
+}
+
+.now-playing-card .player-track-info {
+    width: 100%;
 }
 
 .now-playing-card .artwork-placeholder {
@@ -59,11 +80,17 @@
     font-size: 18px;
     line-height: 1;
     border: none;
+    transition: all 0.2s ease;
 }
 
 .mini-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
     background: #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mini-btn:active {
+    transform: scale(0.95);
 }
 
 
@@ -232,6 +259,17 @@
 
 .play-pause-btn .fa-pause {
     margin-left: 0;
+}
+
+/* Play-Pause Active/Playing State */
+.play-pause-btn.playing {
+    background: #667eea;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.play-pause-btn.playing:hover {
+    background: #5a6dd8;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
 }
 
 /* Progress bar */
