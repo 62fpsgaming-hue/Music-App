@@ -1,6 +1,11 @@
 import { formatDuration } from './utils.js';
 
 export const UI = {
+    // Helper to get favorite class string
+    getFavClass(isFavorite) {
+        return isFavorite ? 'fas active' : 'far';
+    },
+
     // Switch between pages
     showPage(pageId) {
         document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
@@ -32,30 +37,20 @@ export const UI = {
 
     // Helper for heart icon state
     setHeartState(element, isFavorite) {
-        if (isFavorite) {
-            element.classList.add('active', 'fas');
-            element.classList.remove('far');
-        } else {
-            element.classList.remove('active', 'fas');
-            element.classList.add('far');
-        }
+        element.classList.toggle('fas', isFavorite);
+        element.classList.toggle('far', !isFavorite);
+        element.classList.toggle('active', isFavorite);
     },
 
     updatePlayIcons(isPlaying) {
         const mainIcon = document.querySelector('#playPauseBtn i');
-        const miniIcon = document.querySelector('#miniPlayPause');
-
+        const miniIcon = document.querySelector('#miniPlayPause i');
         const remove = isPlaying ? 'fa-play' : 'fa-pause';
         const add = isPlaying ? 'fa-pause' : 'fa-play';
-
-        if (mainIcon) {
-            mainIcon.classList.remove(remove);
-            mainIcon.classList.add(add);
-        }
-        if (miniIcon) {
-            miniIcon.classList.remove(remove);
-            miniIcon.classList.add(add);
-        }
+        [mainIcon, miniIcon].filter(Boolean).forEach(icon => {
+            icon.classList.remove(remove);
+            icon.classList.add(add);
+        });
     },
 
     updateTimeDisplay(currentTime, duration) {
@@ -117,7 +112,7 @@ export const UI = {
                     </div>
                     <span class="track-genre">${track.genre}</span>
                     <span class="track-duration">${formatDuration(track.duration)}</span>
-                    <i class="${track.favorite ? 'fas active' : 'far'} fa-heart track-favorite" data-track="${originalIndex}"></i>
+                    <i class="${this.getFavClass(track.favorite)} fa-heart track-favorite" data-track="${originalIndex}"></i>
                 </li>
             `;
         }).join('');
@@ -153,7 +148,6 @@ export const UI = {
 
         container.innerHTML = results.map(item => {
             const { track, originalIndex } = item;
-            const favClass = track.favorite ? 'fas active' : 'far';
             return `
                 <div class="search-result" data-track="${originalIndex}">
                     <div class="artwork-placeholder small" style="background: ${track.coverColor}"></div>
@@ -162,7 +156,7 @@ export const UI = {
                         <p class="search-meta">${track.artist} • ${track.genre}</p>
                     </div>
                     <div class="search-actions">
-                        <i class="${favClass} fa-heart track-favorite" data-track="${originalIndex}"></i>
+                        <i class="${this.getFavClass(track.favorite)} fa-heart track-favorite" data-track="${originalIndex}"></i>
                     </div>
                 </div>
             `;

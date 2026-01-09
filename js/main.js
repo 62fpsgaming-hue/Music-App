@@ -2,6 +2,14 @@ import { tracks } from './tracks.js';
 import * as Player from './player.js';
 import { UI } from './ui.js';
 
+// Helper to bind multiple button IDs to the same handler
+function bindButtons(ids, handler) {
+    ids.forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) btn.addEventListener('click', handler);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     Player.init();
     Player.loadInitialData();
@@ -9,32 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function bindEvents() {
-    // Play/Pause
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    if (playPauseBtn) playPauseBtn.addEventListener('click', Player.togglePlayPause);
+    // Play/Pause - bind multiple buttons to one handler
+    bindButtons(['playPauseBtn', 'miniPlayPause'], Player.togglePlayPause);
 
-    const miniPlayPause = document.getElementById('miniPlayPause');
-    if (miniPlayPause) miniPlayPause.addEventListener('click', Player.togglePlayPause);
-
-    // Prev/Next
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    if (prevBtn) prevBtn.addEventListener('click', Player.playPrevious);
-    if (nextBtn) nextBtn.addEventListener('click', Player.playNext);
-
-    const miniPrev = document.getElementById('miniPrev');
-    const miniNext = document.getElementById('miniNext');
-    if (miniPrev) miniPrev.addEventListener('click', Player.playPrevious);
-    if (miniNext) miniNext.addEventListener('click', Player.playNext);
+    // Prev/Next - bind multiple pairs
+    bindButtons(['prevBtn', 'miniPrev'], Player.playPrevious);
+    bindButtons(['nextBtn', 'miniNext'], Player.playNext);
 
     // Shuffle/Repeat/Queue
-    const shuffleBtn = document.getElementById('shuffleBtn');
-    const repeatBtn = document.getElementById('repeatBtn');
-    const queueBtn = document.getElementById('queueBtn');
-
-    if (shuffleBtn) shuffleBtn.addEventListener('click', Player.toggleShuffle);
-    if (repeatBtn) repeatBtn.addEventListener('click', Player.toggleRepeat);
-    if (queueBtn) queueBtn.addEventListener('click', Player.toggleQueueView);
+    bindButtons(['shuffleBtn'], Player.toggleShuffle);
+    bindButtons(['repeatBtn'], Player.toggleRepeat);
+    bindButtons(['queueBtn'], Player.toggleQueueView);
 
     // Favorites
     const playerFavoriteBtn = document.getElementById('playerFavoriteBtn');
@@ -49,27 +42,15 @@ function bindEvents() {
     const progressBar = document.getElementById('progressBar');
     if (progressBar) {
         let isDragging = false;
-
         const handleDrag = (e) => {
             const rect = progressBar.getBoundingClientRect();
             const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
             Player.seek(ratio);
         };
-
-        progressBar.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            handleDrag(e);
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) handleDrag(e);
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-
+        progressBar.addEventListener('mousedown', () => { isDragging = true; });
         progressBar.addEventListener('click', handleDrag);
+        document.addEventListener('mousemove', (e) => { if (isDragging) handleDrag(e); });
+        document.addEventListener('mouseup', () => { isDragging = false; });
     }
 
     // Search
