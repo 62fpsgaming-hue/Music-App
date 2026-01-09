@@ -1,0 +1,129 @@
+/* Recent List */
+.recent-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.section-heading {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.recent-list,
+.search-results {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+}
+
+/* Shared Track Item Styling (Recent, Search, Favs) */
+.recent-item,
+.search-result {
+    display: grid;
+    /* Grid aligns for list columns: index, image, info, genre, duration, heart */
+    grid-template-columns: 40px 60px 1fr 150px 60px 40px;
+    align-items: center;
+    padding: 15px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    gap: 15px;
+    background: transparent;
+}
+
+/* Search results might need specific tweak if they lack columns */
+.search-result {
+    /* Override for simpler structure: image, info, heart */
+    grid-template-columns: 60px 1fr 40px;
+    background: #fafafa;
+    border: 1px solid var(--border-color);
+}
+
+.recent-item:hover,
+.search-result:hover {
+    background-color: #f0f0f0;
+}
+
+.track-number {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.track-artwork,
+.artwork-placeholder.small {
+    width: 50px;
+    height: 50px;
+}
+
+.artwork-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 4px;
+}
+
+.track-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.track-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    line-height: 1.4;
+}
+
+.track-artist,
+.search-meta {
+    font-size: 14px;
+    color: #555;
+    font-weight: 400;
+}
+
+.track-genre {
+    font-size: 14px;
+    color: #555;
+    font-weight: 400;
+}
+
+.track-duration {
+    font-size: 14px;
+    color: #555;
+    text-align: right;
+    font-weight: 500;
+}
+
+.track-favorite {
+    font-size: 18px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.track-favorite.active,
+.track-favorite:hover {
+    color: #000;
+    /* or red if preferred */
+}
+
+/* Logo Play Icon */
+.main-logo {
+    position: relative;
+    font-size: 48px;
+    font-weight: 700;
+    color: #000;
+    z-index: 1;
+}
+
+.play-icon {
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px;
+}

@@ -1,0 +1,106 @@
+/* Main Outline Layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 1920px;
+    margin: 0 auto;
+    background: var(--bg-light);
+    box-shadow: var(--shadow-main);
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sidebar General */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--bg-gray);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.sidebar-right {
+    left: auto;
+    right: 0;
+    background: #f0f0f0;
+    border-left: 1px solid #dedede;
+}
+
+/* Main Content Wrapper */
+.main-content {
+    margin-left: 280px;
+    margin-right: 280px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-bottom: 90px;
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+/* Content Padding */
+.content-area {
+    padding: 30px 40px;
+    flex: 1;
+}
+
+/* Header */
+.top-header {
+    position: relative;
+    background-color: var(--bg-gray);
+    padding: 40px 40px 30px;
+    min-height: 120px;
+}
+
+.header-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 20px,
+            rgba(0, 0, 0, 0.03) 20px,
+            rgba(0, 0, 0, 0.03) 40px),
+        repeating-linear-gradient(90deg,
+            transparent,
+            transparent 20px,
+            rgba(0, 0, 0, 0.02) 20px,
+            rgba(0, 0, 0, 0.02) 40px);
+    opacity: 0.4;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .genre-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .recent-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 240px;
+    }
+
+    .main-content {
+        margin-left: 240px;
+    }
+
+    .genre-cards {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,161 @@
+/* Navigation & Left Sidebar Items */
+
+.sidebar-top {
+    background-color: #000;
+    padding: 30px 20px;
+    min-height: 180px;
+}
+
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.logo-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.slogan {
+    color: #fff;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: var(--font-display);
+}
+
+.sidebar-menu {
+    padding: 20px;
+    background-color: var(--bg-gray);
+}
+
+.menu-heading {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.menu-list {
+    list-style: none;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    font-size: 13px;
+    color: #333;
+}
+
+.menu-item span {
+    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.menu-item:hover {
+    background-color: #ddd;
+}
+
+.menu-item.active {
+    background-color: #000;
+    color: #fff;
+}
+
+.menu-item i {
+    margin-right: 12px;
+    width: 18px;
+    font-size: 16px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 20px;
+    background-color: var(--bg-gray);
+}
+
+/* User Profile */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.user-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-name {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.user-info i {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.user-profile .fa-bell {
+    font-size: 18px;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+/* Right Sidebar Elements */
+.sidebar-section {
+    padding: 20px;
+}
+
+.mini-list {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.mini-item {
+    padding: 10px 12px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e2e2;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.mini-item:hover {
+    background: #f9f9f9;
+}
