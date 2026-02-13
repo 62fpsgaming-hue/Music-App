@@ -6,7 +6,7 @@ Team Members:
 - Paree
 - Jeevan Prakash SJ
 - Gaurav Kalal
-- Parbaz Ahmed Mazumder
+- Priyanshu Roy
 
 
 > **100% Free & Open Source!** Download the code, run it locally, and enjoy ad-free music.
